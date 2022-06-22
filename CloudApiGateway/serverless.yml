@@ -1,0 +1,18 @@
+# The `service` block is the name of the service
+service: cloudapigateway
+
+frameworkVersion: "3"
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+# The `functions` block defines what code to deploy
+functions:
+  hello:
+    handler: handler.hello # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          method: POST
+          path: hello
